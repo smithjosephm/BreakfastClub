@@ -12,21 +12,8 @@ def play():
     slot9 = choice(slotsPossible)
     lose = choice(Loser)
     win = lose
-    if (slot1==slot2==slot3=="cherry"):
+    if (slot1==slot2==slot3=="cherry") or (slot1 == slot5 == slot9 == "cherry") or (slot7 == slot5 == slot3 == "cherry") or (slot4==slot5==slot6=="cherry") or (slot7 == slot8 == slot9 == "cherry"):
         win = "\nYou win $%d" % (creditsplayed * 10)
-    ##Top Lateral
-    if (slot1 == slot5 == slot9 == "cherry"):
-        win = "\nYou win $%d" % (creditsplayed * 10)
-    ## diagonal top to bottom right
-    if (slot7 == slot5 == slot3 == "cherry"):
-        win = "\nYou win $%d" % (creditsplayed * 10)
-    ## Diagonal Bottom to top right
-    if (slot4==slot5==slot6=="cherry"):
-        win = "\nYou win $%d" % (creditsplayed * 10)
-    ## Middle Lateral
-    if (slot7 == slot8 == slot9 == "cherry"):
-        win = "\nYou win $%d" % (creditsplayed * 10)
-    ##Bottom Lateral
     if (slot1 == slot2 == slot3 == "cherry") and (slot4 == slot5 == slot6 == "cherry") and (slot7 == slot8 == slot9 == "cherry"):
         win = "\nYou win $%d. JACKPOT Bonus!" % (6 * (creditsplayed * 10))
     ## All Lateral
@@ -143,13 +130,13 @@ def play():
     if (slot4==slot2==slot6=="bar") and (slot7 == slot8 == slot9 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     ##Middle Lateral, bottom lateral
-    if (slot4==slot2==slot6=="bar") and (slot1 == slot2 == slot9 == "bar"):
+    if (slot4==slot2==slot6=="bar") and (slot1 == slot5 == slot9 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     ##Middle Lateral, Diagonal
     if (slot4==slot2==slot6=="bar") and (slot1 == slot2 == slot9 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     #Middle Lateral, Diagonal top to bottom
-    if (slot4==slot2==slot6=="bar") and (slot7 == slot2 == slot3 == "bar"):
+    if (slot4==slot2==slot6=="bar") and (slot7 == slot5 == slot3 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     ##Middle Lateral, bottom to top
     if (slot7==slot8==slot9=="bar") and (slot1 == slot2 == slot3 == "bar"):
@@ -161,7 +148,7 @@ def play():
     if (slot7==slot8==slot9=="bar") and (slot7 == slot2 == slot3 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     ##Bottom lateral, diagonal to top
-    if (slot7==slot8==slot9=="bar") and (slot1 == slot2 == slot9 == "bar"):
+    if (slot7==slot8==slot9=="bar") and (slot1 == slot5 == slot9 == "bar"):
         win = "\nYou win $%d. Multiline Bonus!" % (2 * (creditsplayed * 2))
     ## Bottom Lateral, diagonal from top
     if (slot1==slot2==slot3=="crown") or (slot1 == slot5 == slot9 == "crown") or (slot7 == slot5 == slot3 == "crown") or (slot4==slot5==slot6=="crown") or (slot7==slot8==slot9=="crown"):
@@ -172,7 +159,13 @@ def play():
         win = "\nYou win $%d, not too bad." % (creditsplayed * 2)
         if (creditsplayed * 2) == 20:
             win = "\nYou win $20. Aww $20? I wanted a peanut."
-    return slot1+"|"+slot2+"|"+slot3+"\n"+slot4+"|"+slot5+"|"+slot6+"\n"+slot7+"|"+slot8+"|"+slot9+"\n"+ win + "\n"
+    if (slot1 == slot4 == slot7 == "cherry") or (slot2 == slot5 == slot8 == "cherry") or (slot3 == slot6 == slot9 == "cherry"):
+        win = "\nYou win $%d" % (creditsplayed * 10)
+    if (slot1 == slot4 == slot7 == "crown") or (slot2 == slot5 == slot8 == "crown") or (slot3 == slot6 == slot9 == "crown"):
+        win = "\nYou win $%d" % (creditsplayed * 5)
+    if (slot1 == slot4 == slot7 == "bar") or (slot2 == slot5 == slot8 == "bar") or (slot3 == slot6 == slot9 == "bar"):
+        win = "\nYou win $%d" % (creditsplayed * 2)
+    return slot1+" | "+slot2+" | "+slot3+"\n"+slot4+" | "+slot5+" | "+slot6+"\n"+slot7+" | "+slot8+" | "+slot9+"\n"+ win + "\n"
 
 def gwaphics():
     slotsPossible = ["win", "cash", "money", "$$$$", "bar", "crown","dollas"]
@@ -184,8 +177,8 @@ def gwaphics():
 
 print("Welcome to the Slot Machine!")
 print gwaphics()
-creditsplayed = float(raw_input('How many credits would you like to bet?'))
-numberOfTimes = input('How many games would you like to play?')
+creditsplayed = float(raw_input('How many credits would you like to bet? '))
+numberOfTimes = input('How many games would you like to play? ')
 slotsPossible = ["bar","bar","bar","cherry","crown","crown"]
 Loser = ["\nFEED ME MORE MONEY", "\nYa lose", "\nThanks dood", "\nHow's that retirement fund looking?"]
 
