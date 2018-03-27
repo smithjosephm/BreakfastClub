@@ -59,7 +59,24 @@ def play():
         winSymbol = slot7
         winAmount += calculateAmountWon(winSymbol, creditsplayed)
         winCount += 1
-
+    ##Reel 1
+    if (slot1 == slot4 == slot7):
+        winLineBottom = True
+        winSymbol = slot1
+        winAmount += calculateAmountWon(winSymbol, creditsplayed)
+        winCount += 1
+    ##Reel 2
+    if (slot2 == slot5 == slot8):
+        winLineBottom = True
+        winSymbol = slot2
+        winAmount += calculateAmountWon(winSymbol, creditsplayed)
+        winCount += 1
+    ##Reel 3
+    if (slot3 == slot6 == slot9):
+        winLineBottom = True
+        winSymbol = slot2
+        winAmount += calculateAmountWon(winSymbol, creditsplayed)
+        winCount += 1
 
     
     # special case for all 3 lines winning
